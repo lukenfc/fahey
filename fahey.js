@@ -167,7 +167,7 @@ var doorBool = false
 var sligo = false
 var performed = false
 var knock = false
-var seaman = 15
+var seaman = 1
 }
 //declare string objects
 {
@@ -748,7 +748,7 @@ function lay(){
   fahey.invisible = true
   couch.image = couchImageSit
   document.onkeydown = null
-  if(!performed){
+  if(seaman < 15){
     document.onkeydown = function(e){
       if(e.keyCode === 32){
         awaken()
@@ -760,7 +760,6 @@ function lay(){
     document.getElementById('credits').style.display = 'flex'
     document.getElementById('credits').innerHTML = '<h1>Thanks for playing!</h1>'
     document.getElementById('credits').style.marginLeft = '-170px'
-    document.getElementById('controls-button').style.display = 'none'
     chair.invisible = true
     guitar.invisible = true
   }
@@ -1040,14 +1039,14 @@ function setStage(){
           },100)
           startGame()
           clearInterval(timeOut)
-          // timeOut = setTimeout(()=>{
-          //   knockSound.changeTime(0)
-          //   knockSound.sound.play()
-          //   clearTimeout(timeOut)
-          //   timeOut = setTimeout(()=>{
-          //     knock = true
-          //   },1000)
-          // },5000)
+          timeOut = setTimeout(()=>{
+            knockSound.changeTime(0)
+            knockSound.sound.play()
+            clearTimeout(timeOut)
+            timeOut = setTimeout(()=>{
+              knock = true
+            },1000)
+          },5000)
         }
       }
       else{
